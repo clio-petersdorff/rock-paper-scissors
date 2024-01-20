@@ -31,12 +31,12 @@ function playRound(playerSelection, computerSelection) {
 
     } else if (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper"){
         console.log("Computer: "+computerSelection.toUpperCase())
-        
         win =  "YOU win"
 
     } else if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock"){
         console.log("Computer played "+computerSelection.toUpperCase())
         win =  "YOU win"
+
     } else {
         console.log("Computer played "+computerSelection.toUpperCase())
         win =  "COMPUTER wins"
@@ -73,19 +73,22 @@ function game(playRound, determineWinner){
     while (round < 5) {
         let playerSelection = prompt("Round " + (round + 1) +": Rock, Paper, Scissors?")
         const computerSelection = getComputerChoice();
-        win = playRound(playerSelection,computerSelection)
+        round_outcome = playRound(playerSelection,computerSelection)
         
-        if (win === "YOU win"){
+        if (round_outcome === "YOU win"){
             your_score += 1
             round += 1
-        } else if (win === "you are TIED"){
+        } else if (round_outcome === "you are TIED"){
             round = round
         } else {
             comp_score +=1
             round += 1
         }
 
-        console.log(win+" this round! Your score: "+your_score)
+        console.log(round_outcome+" this round!")
+        console.log("Your score: "+your_score)
+        console.log("Computer score: "+comp_score)
+        console.log(" ")
     }
 
     const winner = determineWinner(your_score, comp_score)
